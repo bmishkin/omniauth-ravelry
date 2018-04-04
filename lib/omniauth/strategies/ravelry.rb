@@ -30,6 +30,9 @@ module OmniAuth
       end
 
       def raw_info
+        puts "access_token: #{access_token}"
+        puts "uid : #{uid}"
+        puts "get: " + access_token.get("https://api.ravelry.com/people/#{uid}.json").body
         @raw_info ||= MultiJson.decode(access_token.get("https://api.ravelry.com/people/#{uid}.json").body)['user']
       end
 
